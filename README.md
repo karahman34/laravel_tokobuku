@@ -1,5 +1,5 @@
 # laravel_tokobuku
-Aplikasi Toko Buku Ujikom 2017 paket B
+Aplikasi Toko Buku yang dibuat menggunakan framework Laravel dan Bootsrap dan juga menggunakan technologi Ajax(75%)nya untuk processingnya
 
 # Configuring
 * Set up application
