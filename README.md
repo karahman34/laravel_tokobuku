@@ -7,6 +7,6 @@ Aplikasi Toko Buku Ujikom 2017 paket B
  * > php artisan migrate:fresh --seed
 
 * Item 1
-* Item 2
+* Item 
   * Item 2a
-  * Item 2b
+  * Item 
