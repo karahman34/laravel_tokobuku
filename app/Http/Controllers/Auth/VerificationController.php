@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 
@@ -47,10 +48,11 @@ class VerificationController extends Controller
      */
     public function show(Request $request)
     {
+        $aim = 'Reset Password';
         $title = 'Reset Password';
 
         return $request->user()->hasVerifiedEmail()
                         ? redirect($this->redirectPath())
-                        : view('auth.verify', compact('title'));
+                        : view('auth.verify', compact('title', 'aim'));
     }
 }
