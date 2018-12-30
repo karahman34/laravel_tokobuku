@@ -5,7 +5,7 @@ Aplikasi Toko Buku Ujikom 2017 paket B
 * Set up application
   * __First__ open ".env.example" file and copy all the scripts.
   * __Second__ create file ".env" outside the folder and paste all the script to it.
-  * __third__ run this command to your Terminal/CMD.
+  * __third__ run this command in your Terminal/CMD.
     > composer install
 * ### Database
   * Create Database with name "laravel_tokobuku"
