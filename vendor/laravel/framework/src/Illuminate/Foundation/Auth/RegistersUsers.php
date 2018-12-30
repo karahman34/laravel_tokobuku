@@ -17,8 +17,7 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        $title = 'Register Kasir';
-        return view('auth.register', compact('title'));
+        return view('auth.register');
     }
 
     /**

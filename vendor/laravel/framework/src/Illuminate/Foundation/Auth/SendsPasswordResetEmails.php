@@ -14,8 +14,7 @@ trait SendsPasswordResetEmails
      */
     public function showLinkRequestForm()
     {
-        $title = 'Reset Password';
-        return view('auth.passwords.email', compact('title'));
+        return view('auth.passwords.email');
     }
 
     /**

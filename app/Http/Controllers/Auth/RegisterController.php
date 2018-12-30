@@ -31,6 +31,17 @@ class RegisterController extends Controller
     protected $redirectTo = '/home';
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $title = 'Register Kasir';
+        return view('auth.register', compact('title'));
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void

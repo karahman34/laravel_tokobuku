@@ -24,8 +24,7 @@ trait ResetsPasswords
      */
     public function showResetForm(Request $request, $token = null)
     {
-        $title = 'Reset Password';
-        return view('auth.passwords.reset', compact('title'))->with(
+        return view('auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }
@@ -111,7 +110,7 @@ trait ResetsPasswords
 
         event(new PasswordReset($user));
 
-        // $this->guard()->login($user);
+        $this->guard()->login($user);
     }
 
     /**
