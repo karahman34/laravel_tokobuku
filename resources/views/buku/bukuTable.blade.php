@@ -35,7 +35,7 @@
           {
             data: 'cover', searchable: false, orderable: false,
             render: function(data){
-              return '<img src="{{ asset('images_buku') }}/'+data+'" class="img-responsive">';
+              return '<img src="{{ asset('images_buku') }}/'+data+'" class="img-responsive" style="max-height:90px !important">';
             },
             noImageText: 'No Image',
           },
