@@ -31,6 +31,16 @@ class RegisterController extends Controller
     protected $redirectTo = '/home';
 
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+    
+    /**
      * Show the application registration form.
      *
      * @return \Illuminate\Http\Response
@@ -39,16 +49,6 @@ class RegisterController extends Controller
     {
         $title = 'Register Kasir';
         return view('auth.register', compact('title'));
-    }
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
     }
 
     /**
