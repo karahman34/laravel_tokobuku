@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Distributor;
 use DataTables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DistributorController extends Controller
 {
@@ -15,6 +16,15 @@ class DistributorController extends Controller
     public function __construct()
     {        
         $this->middleware(['auth', 'verified']);
+
+        $this->middleware(function ($request, $next) {
+            if (Auth::user()->akses !== 'admin')
+            {
+                return redirect()->route('home');
+            }
+    
+            return $next($request);
+        });   
     }
 
     /**

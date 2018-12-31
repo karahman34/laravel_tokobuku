@@ -16,6 +16,15 @@ class HomeController extends Controller
     public function __construct()
     {        
         $this->middleware(['auth', 'verified']);
+
+        $this->middleware(function ($request, $next) {
+            if (Auth::user()->akses !== 'admin')
+            {
+                return redirect()->route('cart.index');
+            }
+    
+            return $next($request);
+        });   
     }
 
     /**

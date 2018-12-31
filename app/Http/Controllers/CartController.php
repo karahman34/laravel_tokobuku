@@ -14,6 +14,15 @@ class CartController extends Controller
     public function __construct()
     {        
         $this->middleware(['auth', 'verified']);
+
+        $this->middleware(function ($request, $next) {
+            if (Auth::user()->akses !== 'kasir')
+            {
+                return redirect()->route('home');
+            }
+    
+            return $next($request);
+        }); 
     }
     /**
      * Display a listing of the resource.

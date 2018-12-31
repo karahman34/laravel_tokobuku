@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Buku;
 use DataTables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BukuController extends Controller
 {
@@ -15,6 +16,15 @@ class BukuController extends Controller
     public function __construct()
     {        
         $this->middleware(['auth', 'verified']);
+
+        $this->middleware(function ($request, $next) {
+            if (Auth::user()->akses !== 'admin')
+            {
+                return redirect()->route('home');
+            }
+    
+            return $next($request);
+        });        
     }
 
     /**
@@ -25,7 +35,7 @@ class BukuController extends Controller
     public function index()
     {
         $tb = 'buku';
-        $title = "List Buku";
+        $title = 'Buku';
         $aim = "Buku";
         
         return view('buku.bukuTable', compact('title', 'aim', 'tb'));
