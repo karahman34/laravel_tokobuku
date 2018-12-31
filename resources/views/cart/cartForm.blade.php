@@ -61,7 +61,7 @@
 
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Kasir <i class="fa fa-shopping-cart"></i></h3>
+                    <h3 class="box-title">Cart <i class="fa fa-shopping-cart"></i></h3>
                 </div>
                 <div class="box-body">
                     {!! Form::model($model, [
