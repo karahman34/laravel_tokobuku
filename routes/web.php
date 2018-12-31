@@ -19,17 +19,6 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/tes', function(){
-    $data = App\Buku::all();
-    $datax = $data->toArray();
-
-    session('name', 'Adaw Kuro');
-
-    foreach(session()->all() as $ses){
-        echo $ses;
-    }
-});
-
 Route::group(['prefix' => 'home'], function () {  
     // Buku    
     Route::get('/buku/datatables', 'BukuController@dataTables')->name('buku.datatables');
