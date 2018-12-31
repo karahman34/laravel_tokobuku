@@ -35,7 +35,7 @@ class BukuController extends Controller
     public function index()
     {
         $tb = 'buku';
-        $title = 'Buku';
+        $title = 'List Buku';
         $aim = "Buku";
         
         return view('buku.bukuTable', compact('title', 'aim', 'tb'));
