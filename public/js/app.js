@@ -37,6 +37,7 @@ $('body').on('click', '.btn-save', function(e){
         processData: false,
         success: function(ok)
         {
+            $('#datatable').DataTable().ajax.reload();
             $('.form-submit').trigger('reset');
             $('#modal').modal('hide');
             swal({
@@ -45,7 +46,6 @@ $('body').on('click', '.btn-save', function(e){
                 icon: 'success',
                 button: 'OK',
             });
-            $('#datatable').DataTable().ajax.reload();
         },
         error: function(xhr)
         {
