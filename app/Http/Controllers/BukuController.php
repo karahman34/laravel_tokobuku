@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Buku;
+use App\Penjualan;
 use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,6 +59,18 @@ class BukuController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
     }
+
+    protected function chart()
+    {
+        $result = Penjualan::select(DB::raw('sum(jumlah) AS top_buku'), 'judul')
+                                ->join('bukus', 'penjualans.id_buku', 'bukus.id_buku')
+                                ->groupBy('penjualans.id_buku')
+                                ->orderBy('top_buku', 'DESC')
+                                ->take(10)
+                                ->get();
+
+        return response()->json($result);                             
+    }   
 
     /**
      * Show the form for creating a new resource.

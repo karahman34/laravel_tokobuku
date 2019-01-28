@@ -18,15 +18,6 @@ class PenjualanController extends Controller
     public function __construct()
     {        
         $this->middleware(['auth', 'verified']);
-
-        $this->middleware(function ($request, $next) {
-            if (Auth::user()->akses !== 'admin')
-            {
-                return redirect()->route('home');
-            }
-    
-            return $next($request);
-        }); 
     }
 
     /**
@@ -53,6 +44,26 @@ class PenjualanController extends Controller
                     ->addIndexColumn()
                     ->rawColumns(['action'])
                     ->make(true);
+    }
+
+    protected function chart()
+    {
+        $result = [
+          Penjualan::whereMonth('created_at', '01')->whereYear('created_at', date("Y"))->count(),
+          Penjualan::whereMonth('created_at', '02')->whereYear('created_at', date("Y"))->count(),
+          Penjualan::whereMonth('created_at', '03')->whereYear('created_at', date("Y"))->count(),
+          Penjualan::whereMonth('created_at', '04')->whereYear('created_at', date("Y"))->count(),
+          Penjualan::whereMonth('created_at', '05')->whereYear('created_at', date("Y"))->count(),
+          Penjualan::whereMonth('created_at', '06')->whereYear('created_at', date("Y"))->count(),
+          Penjualan::whereMonth('created_at', '07')->whereYear('created_at', date("Y"))->count(),
+          Penjualan::whereMonth('created_at', '08')->whereYear('created_at', date("Y"))->count(),
+          Penjualan::whereMonth('created_at', '09')->whereYear('created_at', date("Y"))->count(),
+          Penjualan::whereMonth('created_at', '10')->whereYear('created_at', date("Y"))->count(),
+          Penjualan::whereMonth('created_at', '11')->whereYear('created_at', date("Y"))->count(),
+          Penjualan::whereMonth('created_at', '12')->whereYear('created_at', date("Y"))->count(),
+        ];
+        
+        return response()->json($result);
     }
 
     /**
@@ -86,15 +97,6 @@ class PenjualanController extends Controller
                 'jumlah' => $cart->jumlah,
                 'total' => $cart->harga_total,
             ]);
-
-            $modelBuku = Buku::where('id_buku', $cart->id_buku)->get();
-
-            foreach($modelBuku as $buku)
-            {
-                Buku::where('id_buku', $cart->id_buku)->update([
-                    'stok' => $buku->stok-$cart->jumlah,
-                ]);
-            }
 
             Cart::where('id_buku', $cart->id_buku)->delete();
         }

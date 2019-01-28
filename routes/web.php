@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'home'], function () {  
     // Buku    
+    Route::get('/buku/chart', 'BukuController@chart')->name('buku.chart');
     Route::get('/buku/datatables', 'BukuController@dataTables')->name('buku.datatables');
     Route::resource('/buku', 'BukuController');    
     
@@ -37,6 +38,7 @@ Route::group(['prefix' => 'home'], function () {
     Route::resource('/kasir', 'KasirController');
     
     // Penjualan
+    Route::get('/penjualan/chart', 'PenjualanController@chart')->name('penjualan.chart');
     Route::get('/penjualan/datatables', 'PenjualanController@dataTables')->name('penjualan.datatables');
     Route::resource('/penjualan', 'PenjualanController');
 

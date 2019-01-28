@@ -437,7 +437,9 @@
 {{-- DataTable --}}
 {{-- <script src="{{ asset('assets/plugins/datatables/js/jquery.dataTables.min.js') }}"></script> --}}
 <script src="{{ asset('assets/plugins/datatables/js/datatables.min.js') }}"></script>
-
+{{-- ChartJS --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+{{-- Base URL --}}
 <script>var base_url = '{{ asset('') }}'</script>
 
 // Custom
